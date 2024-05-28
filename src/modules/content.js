@@ -1,10 +1,13 @@
-import { fetchWeather, formatDate, getTime, getDay } from "./app";
+import { formatDate, getTime, getDay } from "./app";
 
-const contentModule = async () => {
+const contentModule = async (data) => {
 
     const wrapper = document.querySelector(".main");
 
-    let { localtime, name, temp_c, condition } = await fetchWeather(); //FETCH DATA FROM API
+    let { localtime, name } = data.location; //FETCH DATA FROM API
+    let { icon, text } = data.current.condition;
+    let { temp_c } = data.current
+
 
     const content =
         `
@@ -27,8 +30,8 @@ const contentModule = async () => {
                     <div class="time">${getTime(localtime)} - ${getDay(localtime)}, ${formatDate(localtime)}</div>
                 </div>
                 <div class="col">
-                    <img src="${condition.icon}" class="weather-icon" />
-                    <div class="weather-description">${condition.text}</div>
+                    <img src="${icon}" class="weather-icon" />
+                    <div class="weather-description">${text}</div>
                 </div>
             </div>
 

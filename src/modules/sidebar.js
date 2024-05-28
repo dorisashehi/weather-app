@@ -1,4 +1,5 @@
 import { fetchWeather } from "./app";
+import { contentModule } from "./content";
 
 
 const getCurentLocation = () => { //RETURN A PROMISE FOR TAKING THE CURRENT LOCATION
@@ -17,13 +18,14 @@ async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
     return locationString;
 }
 
-const getLocation =  async() => {
+const getLocation =  async() => { console.log("hello");
     let position  = await getCurentLocation();
     let location = await showLocation(position);
 
     let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
     if(data){ //IF DATA RETURNED FROM API
         sidebarModule(data); //SHOW CONTENT
+        contentModule(data); //SHOW CONTENT
     }
 }
 
@@ -31,8 +33,8 @@ const sidebarModule = (data) => {
 
     const wrapper = document.querySelector(".right-sidebar-content");
 
-    //getLocation();
-    let { country, region, lat, lon, humidity, wind_degree, feelslike_c } = data;
+    let { country, region, lat, lon } = data.location;
+    let {humidity, wind_degree, feelslike_c } = data.current;
 
     const content =
         `

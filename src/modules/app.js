@@ -5,15 +5,10 @@ const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
 
     let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q='+location,
         {mode: 'cors'}
-    ).catch(err => {
-        console.log(err);
-    })
+    )
     locationWeather = await results.json();
-
-    let { country, region, lat, lon, localtime, name } = locationWeather.location;
-    let { temp_c, humidity, wind_degree, feelslike_c, condition } = locationWeather.current;
-
-    return { country, region, lat, lon, localtime, name, temp_c, humidity, wind_degree, feelslike_c, condition };
+    console.log(locationWeather);
+    return locationWeather;
 
 }
 
