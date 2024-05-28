@@ -1,11 +1,13 @@
 import { format } from 'date-fns';
 let locationWeather = '';
 
-const fetchWeather = async() => { //FETCH DATA FROM WEATHER API
+const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
 
-    let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q=london',
+    let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q='+location,
         {mode: 'cors'}
-    )
+    ).catch(err => {
+        console.log(err);
+    })
     locationWeather = await results.json();
 
     let { country, region, lat, lon, localtime, name } = locationWeather.location;

@@ -1,10 +1,38 @@
-import { fetchWeather, formatDate, getTime, getDay } from "./app";
+import { fetchWeather } from "./app";
 
-const sidebarModule = async () => {
+
+const getCurentLocation = () => { //RETURN A PROMISE FOR TAKING THE CURRENT LOCATION
+    return new Promise(function(resolve, reject){
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+}
+
+async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
+
+    let latitude = await position.coords.latitude;
+    let longitude = await position.coords.longitude;
+
+    let locationString = latitude+","+longitude;
+    return locationString;
+}
+
+const getLocation =  async() => {
+    let position  = await getCurentLocation();
+    let location = await showLocation(position);
+
+    let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
+    if(data){ //IF DATA RETURNED FROM API
+        sidebarModule(data); //SHOW CONTENT
+    }
+}
+
+const sidebarModule = (data) => {
 
     const wrapper = document.querySelector(".right-sidebar-content");
 
-    let { country, region, lat, lon, humidity, wind_degree, feelslike_c } = await fetchWeather(); //FETCH DATA FROM API
+    //getLocation();
+    let { country, region, lat, lon, humidity, wind_degree, feelslike_c } = data;
 
     const content =
         `
@@ -76,10 +104,20 @@ const sidebarModule = async () => {
         `;
 
     wrapper.innerHTML = content;
-
-
-
+    console.log("KEYY");
+    //handleSearchData(); //SEARCH ACTION
 
 };
 
-export {sidebarModule}
+
+const handleSearchData = () => { //HANDLE SEARCH DATA
+    const searchBtn = document.querySelector('.feather-search');
+
+    searchBtn.addEventListener('click', async () => { //ON CLICK OF SEARCH ICON
+
+        let searchValue = document.querySelector('.search').value; //GET VALUE SEARCHED
+        let { country, region, lat, lon, humidity, wind_degree, feelslike_c } = await fetchWeather(searchValue);
+    })
+}
+
+export {getLocation}
