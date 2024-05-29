@@ -101,6 +101,7 @@ const handleSearchData = () => { //HANDLE SEARCH DATA
     let searchValue =  search.value; //GET VALE TEXT SEARCHED
 
     search.addEventListener('input', async () => { //ON CLICK OF SEARCH ICON
+        searchValue = search.value;
         validateValue(searchValue);
     })
 
@@ -124,8 +125,9 @@ const validateValue = (searchedValue) => {
         return false;
     }
 
-    error.classList.remove('error'); //ELSE REMOVE ERROR
     error.textContent = '';
+    error.classList.remove('error'); //ELSE REMOVE ERROR
+
 
     return true; //VALIDATION WITHOUT ERRORS
 
