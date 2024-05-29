@@ -12,12 +12,12 @@ const sidebarModule = (data) => {
             <div class="container search-place">
                 <div class="form-group">
                     <input type="text" placeholder="Another location" class="search"/>
+                    <span class="message"></span>
+                </div>
+                <div class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
                         <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                </div>
-                <div class="search-icon">
-                    <img src="" />
                 </div>
 
             </div>
@@ -97,14 +97,38 @@ const handleHistoryClicked = (e) => { //HISTORY ITEMS CLICKED ACTION
 
 const handleSearchData = () => { //HANDLE SEARCH DATA
     const searchBtn = document.querySelector('.feather-search');
+    let search = document.querySelector('.search'); //GET SEARCH DOM ELEMENT
+    let searchValue =  search.value; //GET VALE TEXT SEARCHED
+
+    search.addEventListener('input', async () => { //ON CLICK OF SEARCH ICON
+        validateValue(searchValue);
+    })
 
     searchBtn.addEventListener('click', async () => { //ON CLICK OF SEARCH ICON
 
-        let searchValue = document.querySelector('.search').value; //GET VALUE SEARCHED
+        if(validateValue(searchValue)){
 
-        pushToHistory(searchValue); //PUSH TO HISTORY VALUE SEARCHED
-        getLocationData(searchValue); //UPDATE DOM WITH LOCATION SEARCHED
+            pushToHistory(searchValue); //PUSH TO HISTORY VALUE SEARCHED
+            getLocationData(searchValue); //UPDATE DOM WITH LOCATION SEARCHED
+        }
     })
+
+}
+
+const validateValue = (searchedValue) => {
+    const error = document.querySelector('span.message');
+
+    if(searchedValue === '') { //IF SEARCH IS EMTRY
+        error.classList.add('error'); //SHOW ERROR
+        error.textContent = "Please input a city / location.";
+        return false;
+    }
+
+    error.classList.remove('error'); //ELSE REMOVE ERROR
+    error.textContent = '';
+
+    return true; //VALIDATION WITHOUT ERRORS
+
 }
 
 export {sidebarModule}
