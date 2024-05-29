@@ -80,13 +80,16 @@ const sidebarModule = (data) => {
 };
 
 const loadHistory = () => { //POPULATE THE HISTORY LIST WITH ITEMS SEARCHED BEFORE
+
     const searchedHistory = document.querySelector('.recent-searched');
     history.forEach(item => { //FOR EACH ITEM SEARCHED BEFORE
+
         const listItem = document.createElement('li');
         listItem.classList.add("row");
         listItem.textContent = item; //GET ITEM TEXT TO SEARCH
         listItem.addEventListener('click', (e) => handleHistoryClicked(e)); //AD ASTION WHEN WE CLICK ON IT
         searchedHistory.appendChild(listItem);
+
     })
 }
 
@@ -96,6 +99,7 @@ const handleHistoryClicked = (e) => { //HISTORY ITEMS CLICKED ACTION
 }
 
 const handleSearchData = () => { //HANDLE SEARCH DATA
+
     const searchBtn = document.querySelector('.feather-search');
     let search = document.querySelector('.search'); //GET SEARCH DOM ELEMENT
     let searchValue =  search.value; //GET VALE TEXT SEARCHED
