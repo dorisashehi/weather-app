@@ -1,4 +1,4 @@
-import { getLocationData } from "./app";
+import { getLocationData, history, pushToHistory } from "./app";
 
 const sidebarModule = (data) => {
 
@@ -24,10 +24,6 @@ const sidebarModule = (data) => {
 
             <div class="container">
                 <ul class="recent-searched">
-                    <li class="row">${country}</li>
-                    <li class="row">New York</li>
-                    <li class="row">Brooklyn</li>
-                    <li class="row">Florida</li>
                 </ul>
             </div>
 
@@ -77,10 +73,27 @@ const sidebarModule = (data) => {
         `;
 
     wrapper.innerHTML = content;
+    loadHistory();
     handleSearchData(); //SEARCH ACTION
+
 
 };
 
+const loadHistory = () => { //POPULATE THE HISTORY LIST WITH ITEMS SEARCHED BEFORE
+    const searchedHistory = document.querySelector('.recent-searched');
+    history.forEach(item => { //FOR EACH ITEM SEARCHED BEFORE
+        const listItem = document.createElement('li');
+        listItem.classList.add("row");
+        listItem.textContent = item; //GET ITEM TEXT TO SEARCH
+        listItem.addEventListener('click', (e) => handleHistoryClicked(e)); //AD ASTION WHEN WE CLICK ON IT
+        searchedHistory.appendChild(listItem);
+    })
+}
+
+const handleHistoryClicked = (e) => { //HISTORY ITEMS CLICKED ACTION
+    getLocationData(e.target.textContent); //GET WEATHER DETAILS FOR THEM
+
+}
 
 const handleSearchData = () => { //HANDLE SEARCH DATA
     const searchBtn = document.querySelector('.feather-search');
@@ -88,6 +101,8 @@ const handleSearchData = () => { //HANDLE SEARCH DATA
     searchBtn.addEventListener('click', async () => { //ON CLICK OF SEARCH ICON
 
         let searchValue = document.querySelector('.search').value; //GET VALUE SEARCHED
+
+        pushToHistory(searchValue); //PUSH TO HISTORY VALUE SEARCHED
         getLocationData(searchValue); //UPDATE DOM WITH LOCATION SEARCHED
     })
 }

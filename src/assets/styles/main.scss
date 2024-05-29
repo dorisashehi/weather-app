@@ -99,7 +99,19 @@ body{
     border-bottom: 1px solid gray;
     padding: 0px 30px;
 }
+.wrapper .right-sidebar-content .container .recent-searched li{
+    position: relative;
+    left: 0px;
+    transition: left 0.2s ease;
+    cursor: pointer;
+    text-transform: capitalize;
 
+}
+.wrapper .right-sidebar-content .container .recent-searched li:hover{
+    color: #ffffff;
+    left: 3px;
+
+}
 .wrapper .right-sidebar-content .container.search-place{
     padding-right: 0px;
 }

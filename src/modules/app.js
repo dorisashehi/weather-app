@@ -1,15 +1,22 @@
 import { format } from 'date-fns';
 import { sidebarModule } from './sidebar';
 import {contentModule } from "./content";
-let locationWeather = '';
 
+let history = ['london', 'madrid', 'berlin','wien']; //BY DEAFAULT WILL HAVE THESE ITEM SEARCHED
+
+const pushToHistory = (searchValue) => { //CHECK IF SEARCHED VALUE EXIST IN HISTORY
+
+    (history.indexOf(searchValue.toLowerCase()) !== 0) ? history.unshift(searchValue) : ''; //PUT AT THE BEGINNING OF THE HISTORY
+    if(history.length > 4) history.pop(); //REMOVE THE LAST ELEMENT OF THE HISTORY
+
+}
 
 const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
 
     let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q='+location,
         {mode: 'cors'}
     )
-    locationWeather = await results.json();
+    let locationWeather = await results.json();
     return locationWeather;
 
 }
@@ -61,4 +68,4 @@ const getDay = (date) => { //GET DAY NAME
 }
 
 
-export {formatDate, getTime, getDay, getLocationData}
+export {formatDate, getTime, getDay, getLocationData, history, pushToHistory}
