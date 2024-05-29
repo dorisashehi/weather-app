@@ -1,7 +1,4 @@
 import './assets/styles/main.scss'
-import { getLocation } from "./modules/sidebar";
-import {contentModule } from "./modules/content";
+import { getLocationData } from "./modules/app";
 
-
-getLocation();
-//contentModule();
+getLocationData(); //GET DEFAULT WEATHER LOCATION

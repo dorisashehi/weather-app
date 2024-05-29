@@ -1,33 +1,4 @@
-import { fetchWeather } from "./app";
-import { contentModule } from "./content";
-
-
-const getCurentLocation = () => { //RETURN A PROMISE FOR TAKING THE CURRENT LOCATION
-    return new Promise(function(resolve, reject){
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-
-}
-
-async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
-
-    let latitude = await position.coords.latitude;
-    let longitude = await position.coords.longitude;
-
-    let locationString = latitude+","+longitude;
-    return locationString;
-}
-
-const getLocation =  async() => { console.log("hello");
-    let position  = await getCurentLocation();
-    let location = await showLocation(position);
-
-    let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
-    if(data){ //IF DATA RETURNED FROM API
-        sidebarModule(data); //SHOW CONTENT
-        contentModule(data); //SHOW CONTENT
-    }
-}
+import { getLocationData } from "./app";
 
 const sidebarModule = (data) => {
 
@@ -106,8 +77,7 @@ const sidebarModule = (data) => {
         `;
 
     wrapper.innerHTML = content;
-    console.log("KEYY");
-    //handleSearchData(); //SEARCH ACTION
+    handleSearchData(); //SEARCH ACTION
 
 };
 
@@ -118,8 +88,8 @@ const handleSearchData = () => { //HANDLE SEARCH DATA
     searchBtn.addEventListener('click', async () => { //ON CLICK OF SEARCH ICON
 
         let searchValue = document.querySelector('.search').value; //GET VALUE SEARCHED
-        let { country, region, lat, lon, humidity, wind_degree, feelslike_c } = await fetchWeather(searchValue);
+        getLocationData(searchValue); //UPDATE DOM WITH LOCATION SEARCHED
     })
 }
 
-export {getLocation}
+export {sidebarModule}

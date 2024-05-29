@@ -4,10 +4,9 @@ const contentModule = async (data) => {
 
     const wrapper = document.querySelector(".main");
 
-    let { localtime, name } = data.location; //FETCH DATA FROM API
+    let { localtime, name } = data.location; //DESTRUCTOR DATA TAKEN FROM API
     let { icon, text } = data.current.condition;
     let { temp_c } = data.current
-
 
     const content =
         `
@@ -19,8 +18,6 @@ const contentModule = async (data) => {
                 </svg> -->
 
             </div>
-
-
             <div class="text-content">
                 <h1 class="col temperature">
                     ${temp_c}°
@@ -36,9 +33,7 @@ const contentModule = async (data) => {
             </div>
 
         `;
-
     wrapper.innerHTML = content;
-
 };
 
 export {contentModule}
