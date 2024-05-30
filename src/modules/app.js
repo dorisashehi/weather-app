@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { sidebarModule } from './sidebar';
 import {contentModule } from "./content";
+import { backgrounds } from '../../weather_conditions';
 
 let history = ['london', 'madrid', 'berlin','wien']; //BY DEAFAULT WILL HAVE THESE ITEM SEARCHED
 
@@ -16,7 +17,9 @@ const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
     let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q='+location,
         {mode: 'cors'}
     )
+
     let locationWeather = await results.json();
+
     return locationWeather;
 
 }
@@ -37,6 +40,24 @@ async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
     return locationString;
 }
 
+const getBckImg = (data) => {
+
+    console.log(data);
+    const currentWeather = data.current;
+    const is_day = (currentWeather.is_day == 1) ? true : false;
+    const weatherCode = currentWeather.condition.code;
+    const weatherCodeData = backgrounds.find(item => item.code.includes(weatherCode));
+
+    let imageSrc = '';
+
+    (is_day) ? imageSrc = weatherCodeData.day.image : imageSrc = weatherCodeData.night.image;
+
+
+    let content = document.querySelector('.wrapper');
+    content.style.backgroundImage = `url(${imageSrc})`;
+    console.log(imageSrc);
+
+}
 const getLocationData =  async(location = '') => {
     if(location == ''){ //GET OUR LOCATION(BROWSER LOCATION) WHEN EMPTY LOCATION
 
@@ -46,8 +67,11 @@ const getLocationData =  async(location = '') => {
     }
 
     let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
+    console.log(data);
+
     if(data){ //IF DATA RETURNED FROM API
 
+        getBckImg(data);//SHOW BACKGROUND IMAGE
         sidebarModule(data); //SHOW CONTENT
         contentModule(data); //SHOW CONTENT
 
