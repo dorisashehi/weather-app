@@ -42,7 +42,6 @@ async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
 
 const getBckImg = (data) => {
 
-    console.log(data);
     const currentWeather = data.current;
     const is_day = (currentWeather.is_day == 1) ? true : false;
     const weatherCode = currentWeather.condition.code;
@@ -52,10 +51,9 @@ const getBckImg = (data) => {
 
     (is_day) ? imageSrc = weatherCodeData.day.image : imageSrc = weatherCodeData.night.image;
 
-
     let content = document.querySelector('.wrapper');
     content.style.backgroundImage = `url(${imageSrc})`;
-    console.log(imageSrc);
+
 
 }
 const getLocationData =  async(location = '') => {

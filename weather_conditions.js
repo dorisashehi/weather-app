@@ -21,7 +21,7 @@ const backgrounds = [
 	},
 
 	{
-	  code: 1009,
+	  code: [1009],
 	  day: {
 		image: 'https://images.pexels.com/photos/573122/pexels-photo-573122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
@@ -32,7 +32,7 @@ const backgrounds = [
 	},
 
 	{
-	  code: 1030,
+	  code: [1030],
 	  day: "Mist",
 	  night: "Mist",
 	  day: {
@@ -69,7 +69,7 @@ const backgrounds = [
 
 
 	{
-	  code: 1087,
+	  code: [1087],
 	  day: {
 		image: 'https://www.pexels.com/photo/san-francisco-bridge-photo-1006965/',
 	  },
@@ -91,7 +91,7 @@ const backgrounds = [
 	  alt: 'Blizzard'
 	},
 	{
-	  code: 1135,
+	  code: [1135],
 	  day: "Fog",
 	  night: "Fog",
 	  day: {
