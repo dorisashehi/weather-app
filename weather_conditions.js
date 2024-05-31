@@ -26,7 +26,7 @@ const backgrounds = [
 		image: 'https://images.pexels.com/photos/573122/pexels-photo-573122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
 	  night: {
-		image: 'https://images.pexels.com/photos/1687104/pexels-photo-1687104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		image: 'https://images.pexels.com/photos/4674341/pexels-photo-4674341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
 	  alt: 'Overcast'
 	},

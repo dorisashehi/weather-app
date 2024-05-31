@@ -18,9 +18,14 @@ const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
         {mode: 'cors'}
     )
 
-    let locationWeather = await results.json();
+    if(results.ok){
 
-    return locationWeather;
+        let locationWeather = await results.json();
+        return locationWeather;
+
+    }else{
+        throw new Error("Couldn't fetch data");
+    }
 
 }
 
@@ -64,14 +69,21 @@ const getLocationData =  async(location = '') => {
 
     }
 
-    let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
-    console.log(data);
+    try{
+        let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
 
-    if(data){ //IF DATA RETURNED FROM API
+        if(data){ //IF DATA RETURNED FROM API
 
-        getBckImg(data);//SHOW BACKGROUND IMAGE
-        sidebarModule(data); //SHOW CONTENT
-        contentModule(data); //SHOW CONTENT
+            getBckImg(data);//SHOW BACKGROUND IMAGE
+            sidebarModule(data); //SHOW CONTENT
+            contentModule(data); //SHOW CONTENT
+
+        }
+    }catch(error){
+
+        const errorMsg = document.querySelector('span.message');
+        errorMsg.classList.add('error'); //SHOW ERROR
+        errorMsg.textContent = error;
 
     }
 }

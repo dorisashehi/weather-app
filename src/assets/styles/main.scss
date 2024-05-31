@@ -1,7 +1,7 @@
 body{
     padding: 0px;
     margin: 0px;
-    font-size: 16px;
+    font-size: 17px;
     font-family: 'Roboto', Times, serif;
 }
 
@@ -54,7 +54,7 @@ body{
     right: 0px;
     min-height: 100vh;
     color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(15px);
     /* padding: 0px 30px; */
 }
 
@@ -79,23 +79,25 @@ body{
     color: #ffffff;
     font-size: 16px;
     padding-left: 10px;
+    padding-top: 20px;
 }
 
 
 .wrapper .right-sidebar-content ul{
     list-style: none;
     padding: 0px 10px;
+    border-bottom: 1px solid gray;
 }
 
 .wrapper .right-sidebar-content ul li.row{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .wrapper .right-sidebar-content .container{
-    border-bottom: 1px solid gray;
+
     padding: 0px 30px;
 }
 .wrapper .right-sidebar-content .container .recent-searched li{
@@ -148,6 +150,7 @@ body{
     color: rgba(255, 255, 255, 0.6);
     font-style: italic;
 
+
 }
 
 .wrapper .right-sidebar-content .search-place .search{
@@ -156,6 +159,7 @@ body{
     border-bottom: 1px solid gray;
     width: calc(100% - 40px);
     margin-top: 10px;
+    color: rgba(255, 255, 255, 0.6);
 
 }
 
