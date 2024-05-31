@@ -79,7 +79,7 @@ const backgrounds = [
 	  alt: 'Thundery'
 	},
 	{
-	  code: 1117,
+	  code: [1117],
 	  day: "Blizzard",
 	  night: "Blizzard",
 	  day: {

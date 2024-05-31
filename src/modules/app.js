@@ -47,6 +47,8 @@ async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
 
 const getBckImg = (data) => {
 
+    console.log(data);
+
     const currentWeather = data.current;
     const is_day = (currentWeather.is_day == 1) ? true : false;
     const weatherCode = currentWeather.condition.code;
@@ -81,6 +83,7 @@ const getLocationData =  async(location = '') => {
         }
     }catch(error){
 
+        console.log(error);
         const errorMsg = document.querySelector('span.message');
         errorMsg.classList.add('error'); //SHOW ERROR
         errorMsg.textContent = error;
