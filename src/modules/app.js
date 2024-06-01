@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import { sidebarModule } from './sidebar';
 import {contentModule } from "./content";
 import { backgrounds } from '../../weather_conditions';
+import { showSpinner } from './spinner';
 
 let history = ['london', 'madrid', 'berlin','wien']; //BY DEAFAULT WILL HAVE THESE ITEM SEARCHED AT HISTORY
 
@@ -17,9 +18,10 @@ const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
     let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q='+location,
         {mode: 'cors'}
     )
+    //showSpinner(true);
 
     if(results.ok){
-
+        ///showSpinner(false);
         let locationWeather = await results.json();
         return locationWeather;
 
@@ -62,6 +64,7 @@ const getBckImg = (data) => { //GET BACKGROUND IMAGE BASED ON THE WEATHER CODE T
 
 }
 const getLocationData =  async(location = '') => {
+    //showSpinner(true);
     if(location == ''){ //GET OUR LOCATION(BROWSER LOCATION) WHEN EMPTY LOCATION
 
         let position  = await getCurentLocation();
@@ -72,15 +75,19 @@ const getLocationData =  async(location = '') => {
     try{
         let data = await fetchWeather(location); //WAIT TO FETCH DATA FROM API
 
+        showSpinner(true);
+
         getBckImg(data);//SHOW BACKGROUND IMAGE
         sidebarModule(data); //SHOW CONTENT
         contentModule(data); //SHOW CONTENT
+
 
     }catch(error){  //IF ANY ERROR IS THROWN DURING THE FETCH
 
         const errorMsg = document.querySelector('span.message');
         errorMsg.classList.add('error'); //SHOW ERROR
         errorMsg.textContent = error;
+        showSpinner(true); //REMOVE LOADER
 
     }
 }

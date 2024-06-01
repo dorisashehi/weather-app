@@ -1,4 +1,5 @@
 import { getLocationData, history, pushToHistory } from "./app";
+import { showSpinner } from './spinner';
 
 const sidebarModule = (data) => {
 
@@ -113,8 +114,13 @@ const handleSearchData = () => { //HANDLE SEARCH DATA
 
         if(validateValue(searchValue)){
 
-            pushToHistory(searchValue); //PUSH TO HISTORY VALUE SEARCHED
-            getLocationData(searchValue); //UPDATE DOM WITH LOCATION SEARCHED
+            showSpinner(false); //SHOW LOADER
+
+            setTimeout(()=>{ //SHOW RESULT AFTER SOME TIMES
+                getLocationData(searchValue); //UPDATE DOM WITH LOCATION SEARCHED
+                pushToHistory(searchValue); //PUSH TO HISTORY VALUE SEARCHED
+            },1000)
+
         }
     })
 

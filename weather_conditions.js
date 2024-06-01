@@ -119,7 +119,7 @@ const backgrounds = [
 	  day: "Patchy light rain",
 	  night: "Patchy light rain",
 	  day: {
-		image: 'https://images.pexels.com/photos/20383615/pexels-photo-20383615/free-photo-of-people-feeding-pigeons-in-city-during-rain.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		image: 'https://images.pexels.com/photos/950223/pexels-photo-950223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
 	  night: {
 		image: 'https://images.pexels.com/photos/5409363/pexels-photo-5409363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
