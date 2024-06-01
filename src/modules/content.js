@@ -6,7 +6,7 @@ const contentModule = async (data) => {
 
     let { localtime, name } = data.location; //DESTRUCTOR DATA TAKEN FROM API
     let { icon, text } = data.current.condition;
-    let { temp_c } = data.current
+    let { temp_c, temp_f } = data.current
 
     const content =
         `
@@ -19,8 +19,11 @@ const contentModule = async (data) => {
 
             </div>
             <div class="text-content">
-                <h1 class="col temperature">
+                <h1 class="col temperature-celcius">
                     ${temp_c}°
+                </h1>
+                <h1 class="col temperature-fahreneit hidden">
+                    ${temp_f}F
                 </h1>
                 <div class="col">
                     <h3 class="location">${name}</h3>

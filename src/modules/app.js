@@ -83,6 +83,7 @@ const getLocationData =  async(location = '') => {
 
 
     }catch(error){  //IF ANY ERROR IS THROWN DURING THE FETCH
+        console.log(error);
 
         const errorMsg = document.querySelector('span.message');
         errorMsg.classList.add('error'); //SHOW ERROR
