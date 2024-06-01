@@ -3,7 +3,7 @@ import { sidebarModule } from './sidebar';
 import {contentModule } from "./content";
 import { backgrounds } from '../../weather_conditions';
 
-let history = ['london', 'madrid', 'berlin','wien']; //BY DEAFAULT WILL HAVE THESE ITEM SEARCHED
+let history = ['london', 'madrid', 'berlin','wien']; //BY DEAFAULT WILL HAVE THESE ITEM SEARCHED AT HISTORY
 
 const pushToHistory = (searchValue) => { //CHECK IF SEARCHED VALUE EXIST IN HISTORY
 
@@ -45,19 +45,19 @@ async function showLocation(position) { //FNC TO GET COORDS OF THE LOCATION
     return locationString;
 }
 
-const getBckImg = (data) => {
+const getBckImg = (data) => { //GET BACKGROUND IMAGE BASED ON THE WEATHER CODE TAKEN FROM SEARCHED PLACE
 
     const currentWeather = data.current;
-    const is_day = (currentWeather.is_day == 1) ? true : false;
-    const weatherCode = currentWeather.condition.code;
-    const weatherCodeData = backgrounds.find(item => item.code.includes(weatherCode));
+    const is_day = (currentWeather.is_day == 1) ? true : false; //CHECK ID ITS DAY OR NIGHT
+    const weatherCode = currentWeather.condition.code; //SEARCHED LOCATION WEATHER CODE
+    const weatherCodeData = backgrounds.find(item => item.code.includes(weatherCode)); //GET IMAGE FROM BACKGROUND DATA BASED ON THE CODE
 
     let imageSrc = '';
 
-    (is_day) ? imageSrc = weatherCodeData.day.image : imageSrc = weatherCodeData.night.image;
+    (is_day) ? imageSrc = weatherCodeData.day.image : imageSrc = weatherCodeData.night.image; //BACKGROUND IMG BASED ON DAY OR NIGHT
 
     let content = document.querySelector('.wrapper');
-    content.style.backgroundImage = `url(${imageSrc})`;
+    content.style.backgroundImage = `url(${imageSrc})`; //SET URL OF IMAGE AS BACKGROUND TO WARPPER DIV
 
 
 }
@@ -76,7 +76,7 @@ const getLocationData =  async(location = '') => {
         sidebarModule(data); //SHOW CONTENT
         contentModule(data); //SHOW CONTENT
 
-    }catch(error){
+    }catch(error){  //IF ANY ERROR IS THROWN DURING THE FETCH
 
         const errorMsg = document.querySelector('span.message');
         errorMsg.classList.add('error'); //SHOW ERROR
