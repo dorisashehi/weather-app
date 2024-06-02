@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
@@ -17,6 +18,9 @@ module.exports = {
             title: "Weather App",
             filename: 'index.html', //the name of the html from source to destination
             template: 'src/index.html' //that is the html file in source
+        }),
+        new Dotenv({
+            defaults: true
         })
     ],
     module:{

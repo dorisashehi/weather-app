@@ -15,7 +15,7 @@ const pushToHistory = (searchValue) => { //CHECK IF SEARCHED VALUE EXIST IN HIST
 
 const fetchWeather = async(location) => { //FETCH DATA FROM WEATHER API
 
-    let results = await fetch('https://api.weatherapi.com/v1/current.json?key=0b97f25ae5fb432c977180517242505&q='+location,
+    let results = await fetch(`https://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${location}`,
         {mode: 'cors'}
     )
     //showSpinner(true);
