@@ -83,11 +83,14 @@ const getLocationData =  async(location = '') => {
 
 
     }catch(error){  //IF ANY ERROR IS THROWN DURING THE FETCH
-        console.log(error);
+        console.log(error)
 
         const errorMsg = document.querySelector('span.message');
-        errorMsg.classList.add('error'); //SHOW ERROR
-        errorMsg.textContent = error;
+        if(errorMsg){
+            errorMsg.classList.add('error'); //SHOW ERROR
+            errorMsg.textContent = error;
+
+        }
         showSpinner(true); //REMOVE LOADER
 
     }
