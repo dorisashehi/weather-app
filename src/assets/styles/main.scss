@@ -23,10 +23,13 @@ body{
     }
     .feather-menu{
         cursor: pointer;
+        padding: 7px;
+        background: rgb(196, 194, 201);
+        color: rgb(59, 59, 59);
+        &:hover {
+            opacity: 0.9;
+        }
 
-    }
-    .feather-menu:hover{
-        color: rgba(255, 255, 255, 0.6);
     }
     img.loading-spinner{
         display: block;

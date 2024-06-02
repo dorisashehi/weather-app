@@ -15,7 +15,7 @@ const backgrounds = [
 		image: 'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg',
 	  },
 	  night: {
-		image: 'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg',
+		image: 'https://images.pexels.com/photos/20401500/pexels-photo-20401500/free-photo-of-rocky-cliff-among-clouds.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
 	  alt: 'cloudy'
 	},
@@ -23,10 +23,10 @@ const backgrounds = [
 	{
 	  code: [1009],
 	  day: {
-		image: 'https://images.pexels.com/photos/573122/pexels-photo-573122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		image: 'https://images.pexels.com/photos/4577777/pexels-photo-4577777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
 	  night: {
-		image: 'https://images.pexels.com/photos/4674341/pexels-photo-4674341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		image: 'https://images.pexels.com/photos/3224106/pexels-photo-3224106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 	  },
 	  alt: 'Overcast'
 	},
