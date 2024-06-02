@@ -169,7 +169,10 @@ const loadHistory = () => { //POPULATE THE HISTORY LIST WITH ITEMS SEARCHED BEFO
 }
 
 const handleHistoryClicked = (e) => { //HISTORY ITEMS CLICKED ACTION
-    getLocationData(e.target.textContent); //GET WEATHER DETAILS FOR THEM
+    showSpinner(false); //SHOW LOADER
+    setTimeout(()=>{ //SHOW RESULT AFTER SOME TIMES
+        getLocationData(e.target.textContent); //GET WEATHER DETAILS FOR THEM
+    },300)
 
 }
 
