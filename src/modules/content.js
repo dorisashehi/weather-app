@@ -2,7 +2,7 @@ import { formatDate, getTime, getDay } from "./app";
 
 const contentModule = async (data) => {
 
-    const wrapper = document.querySelector(".main");
+    const wrapper = document.querySelector(".container");
 
     let { localtime, name } = data.location; //DESTRUCTOR DATA TAKEN FROM API
     let { icon, text } = data.current.condition;
@@ -10,14 +10,6 @@ const contentModule = async (data) => {
 
     const content =
         `
-            <div class="menu-content">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg> -->
-
-            </div>
             <div class="text-content">
                 <h1 class="col temperature-celcius">
                     ${temp_c}°
@@ -37,6 +29,24 @@ const contentModule = async (data) => {
 
         `;
     wrapper.innerHTML = content;
+    toggleSidebar();
 };
 
+const toggleSidebar = () => {
+    document.querySelector(".feather-menu").addEventListener('click', () => {
+
+        // Get the element by its class name
+        var element = document.querySelector('.right-sidebar-content');
+
+        // Check if the element exists
+        if (element) {
+
+            // Get the class list of the element
+            var classList = element.classList.toggle("show");
+
+
+        }
+
+    })
+}
 export {contentModule}
