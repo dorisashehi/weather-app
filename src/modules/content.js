@@ -25,11 +25,11 @@ const contentModule = async (data) => {
                 <h1 class="col temperature-fahreneit hidden">
                     ${temp_f}F
                 </h1>
-                <div class="col">
+                <div class="col location-time">
                     <h3 class="location">${name}</h3>
                     <div class="time">${getTime(localtime)} - ${getDay(localtime)}, ${formatDate(localtime)}</div>
                 </div>
-                <div class="col">
+                <div class="col icon-descr">
                     <img src="${icon}" class="weather-icon" />
                     <div class="weather-description">${text}</div>
                 </div>
