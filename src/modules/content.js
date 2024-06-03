@@ -29,24 +29,6 @@ const contentModule = async (data) => {
 
         `;
     wrapper.innerHTML = content;
-    toggleSidebar();
 };
 
-const toggleSidebar = () => {
-    document.querySelector(".feather-menu").addEventListener('click', () => {
-
-        // Get the element by its class name
-        var element = document.querySelector('.right-sidebar-content');
-
-        // Check if the element exists
-        if (element) {
-
-            // Get the class list of the element
-            var classList = element.classList.toggle("show");
-
-
-        }
-
-    })
-}
 export {contentModule}

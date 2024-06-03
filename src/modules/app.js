@@ -109,5 +109,23 @@ const getDay = (date) => { //GET DAY NAME
     return format(date, "eeee")
 }
 
+const toggleSidebar = () => {
+    document.querySelector(".feather-menu").addEventListener('click', () => {
 
-export {formatDate, getTime, getDay, getLocationData, history, pushToHistory}
+        // Get the element by its class name
+        var element = document.querySelector('.right-sidebar-content');
+
+        // Check if the element exists
+        if (element) {
+
+            console.log(element.classList.contains('show'));
+            // Get the class list of the element
+            var classList = element.classList.toggle("show");
+
+
+        }
+
+    })
+}
+
+export {formatDate, getTime, getDay, getLocationData, history, pushToHistory, toggleSidebar}
