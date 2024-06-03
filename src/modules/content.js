@@ -32,19 +32,6 @@ const contentModule = async (data) => {
     toggleSidebar();
 };
 
-
-// document.addEventListener('click', function(e){
-//     if (document.querySelector('.right-sidebar-content').contains(e.target)){
-//       // Clicked in box
-//       console.log("heyy");
-
-//     } else{
-//       // Clicked outside the box
-//       console.log("yy");
-//       document.querySelector('.right-sidebar-content').classList.toggle("show");
-//     }
-//   });
-
 const toggleSidebar = () => {
     document.querySelector(".feather-menu").addEventListener('click', () => {
 

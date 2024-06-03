@@ -104,8 +104,6 @@ const sidebarModule = (data) => {
     loadHistory();
     switchTemp();
     handleSearchData(); //SEARCH ACTION
-
-
 };
 
 const switchTemp = () => {

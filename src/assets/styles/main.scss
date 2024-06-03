@@ -5,7 +5,7 @@ body{
     margin: 0px;
     font-size: 17px;
     font-family: "Oxygen", sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     overflow: hidden;
 }
 
@@ -68,8 +68,12 @@ body{
             margin: 0px;
         }
         .time, .wrapper .text-content .weather-description{
-            font-size: 0.5rem;
+            font-size: 0.9rem;
         }
+        .weather-description{
+            font-size: 0.9rem;
+        }
+
     }
 
     .menu-content{
@@ -90,7 +94,7 @@ body{
         right: 0px;
         min-height: 100vh;
         color: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(18px);
         height: 100%;
         overflow-y: scroll;
         margin-right: -100%;
@@ -284,7 +288,7 @@ body{
 
             }
             .time, .wrapper .text-content .weather-description{
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
         }
     }
