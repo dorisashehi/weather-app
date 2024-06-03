@@ -23,7 +23,7 @@ body{
     }
     .feather-menu{
         cursor: pointer;
-        padding: 7px;
+        padding: 12px;
         background: rgb(196, 194, 201);
         color: rgb(59, 59, 59);
         z-index: 2;
@@ -84,6 +84,7 @@ body{
         align-items: center;
         p{
             padding-left: 10px;
+            font-size: 1.5rem;
         }
     }
 
